@@ -1,0 +1,33 @@
+* {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0rem;
+}
+.bg-container {
+    background-color: var(--bg-color);
+}
+.filter {
+    display: flex;
+    background-color: var(--nav-color);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.filter button {
+    padding: 1rem;
+    border: 0.25rem solid var(--btn-alt-color);
+    background-color: var(--btn-color);
+    color: var(--alt-text-color);
+    cursor: pointer;
+}
+.filter button:hover {
+    border: 0.25rem solid var(--btn-color);
+    background-color: var(--btn-alt-color);
+    color: var(--alt-text-color);
+}
+/* grid */
+.grid-container {
+    background-image: url(/assets/redcurtains.jpeg);
+    display: grid;
+
+}
