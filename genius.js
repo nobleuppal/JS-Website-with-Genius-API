@@ -10,9 +10,14 @@ const modalOpen = '[data-open]';
 const modalClose = '[data-close]';
 const isVisible = 'is-visible';
 const emSongs = [];
+const emNodes = [];
+const emFav = [];
 let i = 0;
 const openModal = document.querySelectorAll(modalOpen);
 const closeModal = document.querySelectorAll(modalClose);
+
+
+
 
 eminem
 .then(data => data.json())
@@ -28,7 +33,12 @@ eminem
        img.src = '/assets/Elogo.png';
        div.appendChild(img);
 
+       let icon = document.createElement('i');
+       icon.classList.add('fa', 'fa-star');
+       div.appendChild(icon);
+
        emSongs.push(song);
+       emNodes.push(document.getElementById(i));
        i++;
 
        });
@@ -42,17 +52,13 @@ setTimeout(function () {
               elm.addEventListener('click', function() {
                      const modalID = this.dataset.open;
                      document.getElementById(modalID).classList.add(isVisible);  
-                     
-                     console.log(emSongs[elm.id].full_title); 
-
-              
+                                  
                      let div = document.createElement('div');
                      document.getElementById('song-info').appendChild(div);
                      div.innerHTML += emSongs[elm.id].full_title;
 
                      let img = document.createElement('img');
                      document.getElementById('song-info').appendChild(img);
-                     console.log(emSongs);
                      img.src = emSongs[elm.id].song_art_image_url;
 
                      let a = document.createElement('a');
@@ -77,6 +83,61 @@ setTimeout(function () {
               });  
        }
 }, 1000);
+
+setTimeout(function() {
+       for (const elm of document.getElementsByClassName('fa-star')) {
+              elm.addEventListener('click', function() {
+                     this.parentElement.classList.add('fav'); 
+                     emFav.push(this.parentElement);
+              });
+       };
+}, 1500);
+
+setTimeout(function() {
+       const favButton = document.getElementById('favorites');
+       const singles = document.getElementsByClassName('top-thirty');
+       favButton.addEventListener('click', function() {
+              for (const fav of emFav) {
+                     document.getElementById('all-songs').appendChild(fav);
+              }
+
+              for (let element = 0; element < singles.length;) {
+                     if (singles[element].className != 'top-thirty fav') {
+                            singles[element].remove();                                                  
+                     }
+                     else {
+                            singles[element].childNodes[2].remove();
+                            let button = document.createElement('button');
+                            button.classList.add('remove');
+                            singles[element].appendChild(button);
+                            button.innerHTML += 'Remove';
+                     
+                            element++;
+                     }
+              }
+
+       });
+       
+     
+}, 1500);
+
+setTimeout(function () {
+       const favorites = document.getElementsByClassName('fav');
+       const collectionButton = document.getElementById('collection');
+       
+       collectionButton.addEventListener('click', function() {
+              for (const song of emNodes) {
+                     document.getElementById('all-songs').appendChild(song);
+                     for (const fav of favorites) {
+                            if (song.firstChild == fav.firstChild) {
+                                   song.remove();
+                                   fav.remove();
+                            }
+                     }
+              }
+       });
+
+}, 1500);
 
 
 

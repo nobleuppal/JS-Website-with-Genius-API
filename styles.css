@@ -9,8 +9,7 @@
 .filter {
     display: flex;
     background-color: var(--nav-color);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    margin-top: 1rem;
 }
 .filter button {
     padding: 1rem;
@@ -18,6 +17,7 @@
     background-color: var(--btn-color);
     color: var(--alt-text-color);
     cursor: pointer;
+    text-decoration: none;
 }
 .filter button:hover {
     border: 0.25rem solid var(--btn-color);
@@ -48,8 +48,8 @@
 }
 /* songs styling */ 
 .top-thirty {
-    width: 8.5rem;
-    height: 8.5rem;
+    width: 9rem;
+    height: 9rem;
     background-color: var(--btn-color);
     border: 0.25rem solid var(--order-text-color);
     display: flex;
@@ -63,6 +63,12 @@
 .top-thirty img {
     width: 3rem;
     height: 3rem;
+}
+.fa-star {
+    cursor: pointer;
+}
+.fa-star:hover {
+    color: var(--link-color);
 }
 /* modal */
 .full-modal {
@@ -117,4 +123,20 @@
 }
 #song-info a:hover {
     color: var(--btn-color);
+}
+/* favourites */
+.fav .fa-star {
+    color: var(--link-color);
+}
+.fav button {
+    background-color: var(--link-color);
+    color: var(--order-text-color);
+    border: 0.25rem solid var(--btn-alt-color);
+    cursor: pointer;
+}
+.fav button:hover {
+    border: 0.25rem solid var(--alt-text-color);
+    background-color: var(--btn-alt-color);
+    color: var(--btn-color);
+
 }
