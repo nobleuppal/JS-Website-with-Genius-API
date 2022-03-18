@@ -59,6 +59,8 @@ setInterval(function(){
        checkFav();
        checkCollection();
        removeFavs();
+       alphaOrder();
+       reverseOrder();
 }, 1000);
   
 
@@ -114,11 +116,12 @@ function modalCloser() {
 }
 
 function favorite() {
-       for (const elm of document.getElementsByClassName('fa-star')) {
+       const star = document.getElementsByClassName('fa-star')
+       for (const elm of star) {
               elm.addEventListener('click', function() {                     
                      let button = document.createElement('i');                     
                      button.classList.add('fa','fa-times','remove');
-                     this.parentElement.appendChild(button);
+                     elm.parentElement.appendChild(button);
                      this.parentElement.remove();
                      elm.remove();
               });
@@ -169,11 +172,75 @@ function removeFavs() {
                             }
                      }   
               });
-       }
-                                  
+       }                                  
 }
 
 
+function alphaOrder() {
+       const alpha = document.getElementById('az');
+       const nodes = document.getElementsByClassName('top-thirty');
+       let first;
+       let second;
+       
+     
+       alpha.addEventListener('click', function() {
+              let k = 0
+              while (k < nodes.length) {
+                     sort(nodes);
+                     k++;
+              }
+       });
+}
+
+function reverseOrder() {
+       const reverse = document.getElementById('za');
+       const nodes = document.getElementsByClassName('top-thirty');
+       let first;
+       let second;
+
+       reverse.addEventListener('click', function() {
+              let k = 0;
+              while (k < nodes.length) {
+                     reverseSort(nodes);
+                     k++;
+              }
+       });
+}
+
+
+function sort(nodes) {
+       for (let elm = 0; elm < nodes.length; elm++) {   
+              first = nodes[elm].innerText; 
+           
+              if (elm < 29) {
+                     second = nodes[elm+1].innerText; 
+              }
+              else {
+                     continue;
+              }  
+
+              if(first > second) {
+                     nodes[elm].parentElement.insertBefore(nodes[elm+1], nodes[elm]);  
+              }                   
+       }
+}
+
+function reverseSort(nodes) {
+       for (let elm = 0; elm < nodes.length; elm++) {   
+              first = nodes[elm].innerText; 
+           
+              if (elm < 29) {
+                     second = nodes[elm+1].innerText; 
+              }
+              else {
+                     continue;
+              }  
+
+              if(first < second) {
+                     nodes[elm].parentElement.insertBefore(nodes[elm+1], nodes[elm]);  
+              }                   
+       }
+}
        
 
 
