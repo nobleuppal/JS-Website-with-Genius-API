@@ -52,6 +52,7 @@ setTimeout(function() {
        loadNodes();
        modalOpener();
        modalCloser();
+       pageVisits();
 }, 1500);
 
 setInterval(function(){  
@@ -76,6 +77,7 @@ function loadNodes() {
        for (const elm of emNodes) {
             document.getElementById('all-songs').appendChild(elm);
        }
+       
 }
 
 function modalOpener() {
@@ -240,6 +242,17 @@ function reverseSort(nodes) {
                      nodes[elm].parentElement.insertBefore(nodes[elm+1], nodes[elm]);  
               }                   
        }
+}
+
+function pageVisits() {
+       const visits = document.getElementById('page-views');
+       let num = 0;
+       for (const elm of emSongs) {
+              num += elm.stats.pageviews;          
+       }
+       let div = document.createElement('div');
+       div.innerHTML = num;
+       visits.appendChild(div);
 }
        
 

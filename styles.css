@@ -134,3 +134,15 @@
 .top-thirty .fa-times:hover {
     color: var(--alt-text-color);
 }
+/* page views */
+#page-views {
+    grid-column: 5/6;
+    grid-row: 1/2;
+    color: var(--alt-text-color);
+}
+#page-views div {
+    color: var(--btn-color);
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bolder;
+}
