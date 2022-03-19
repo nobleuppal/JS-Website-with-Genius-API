@@ -52,8 +52,11 @@ setTimeout(function() {
        loadNodes();
        modalOpener();
        modalCloser();
-       pageVisits();
 }, 1500);
+
+setTimeout(function() {
+       pageVisits();
+}, 2000);
 
 setInterval(function(){  
        favorite();
