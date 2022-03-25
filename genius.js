@@ -45,9 +45,25 @@ eminem
 
        });
  })
+ .then(() => {
+       loadNodes();
+       modalOpener();
+       modalCloser();
+       pageVisits();
+
+       setInterval(function(){  
+              favorite();
+              checkFav();
+              checkCollection();
+              removeFavs();
+              alphaOrder();
+              reverseOrder();
+       }, 1000);
+    
+ })
 .catch(err => console.log(err));
 
-
+/*
 setTimeout(function() {
        loadNodes();
        modalOpener();
@@ -66,6 +82,7 @@ setInterval(function(){
        alphaOrder();
        reverseOrder();
 }, 1000);
+*/
   
 
 
